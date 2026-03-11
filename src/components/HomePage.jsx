@@ -15,9 +15,7 @@ const HomePage = () => {
             Hello, I'm <span className="highlight">ParvezAlam Shaik</span>
           </h1>
 
-          <p className="sub">
-Aspiring Software Developer passionate about learning and building modern, user-friendly software applications.          </p>
-
+          <p className="sub">Computer Science and Engineering undergraduate with hands-on experience building full-stack web applications and AI-integrated systems.</p>
           <div className="mission">
             <strong>MY MISSION</strong>
             <p>

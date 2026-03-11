@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Contact.css";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+
   const [formMessage, setFormMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -19,18 +21,40 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      if (formData.name && formData.email && formData.message) {
-        setFormMessage("MESSAGE SENT ✓ CONNECTION ESTABLISHED");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-      } else {
-        setFormMessage("ERROR ✗ FILL ALL REQUIRED FIELDS");
-      }
-      setIsSubmitting(false);
-    }, 1500);
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    emailjs
+      .send(
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
+        templateParams,
+        "YOUR_PUBLIC_KEY"
+      )
+      .then(
+        () => {
+          setFormMessage("MESSAGE SENT ✓ CONNECTION ESTABLISHED");
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+          });
+          setIsSubmitting(false);
+        },
+        () => {
+          setFormMessage("ERROR ✗ FAILED TO SEND MESSAGE");
+          setIsSubmitting(false);
+        }
+      );
   };
 
   return (
@@ -38,38 +62,58 @@ const Contact = () => {
       <h2 className="contact-title">CONTACT ME()</h2>
 
       <div className="contact-container">
-        {/* Left Panel — Info */}
+
+        {/* Left Panel */}
         <div className="info-panel">
-          <h3 className="info-title">Let's Build Something Amazing Together</h3>
+          <h3 className="info-title">
+            Let's Build Something Amazing Together
+          </h3>
+
           <p className="info-text">
-            Hello, I am a **fresher software developer** currently building my portfolio and looking for opportunities to work on real projects. I would love to connect and learn from professionals in the field.
+            Hello, I am a fresher software developer currently building my
+            portfolio and looking for opportunities to work on real projects.
+            I would love to connect and learn from professionals in the field.
           </p>
 
-          {/* Social Icons like HomePage */}
           <div className="social-icons">
-            <a href="https://github.com/ParvezAlasm4427" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/ParvezAlam4427"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaGithub />
             </a>
-            <a href="www.linkedin.com/in/parvez-alam-shaik-7b1117306" target="_blank" rel="noreferrer">
+
+            <a
+              href="https://www.linkedin.com/in/parvez-alam-shaik-7b1117306"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaLinkedin />
             </a>
-            <a href="https://x.com/Parvezalam2459?t=J7Mv-RlD9TzveF0Bo1-srg&s=09" target="_blank" rel="noreferrer">
+
+            <a
+              href="https://x.com/Parvezalam2459"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaTwitter />
             </a>
-            <a href="parvezalamshaik59@gmail.com">
+
+            <a href="mailto:parvezalamshaik59@gmail.com">
               <FaEnvelope />
             </a>
           </div>
         </div>
 
-        {/* Right Panel — Form */}
+        {/* Contact Form */}
         <div className="contact-form">
           <form onSubmit={handleSubmit}>
+
             <div className="form-group">
-              <label htmlFor="name" className="label">NAME</label>
+              <label className="label">NAME</label>
               <input
                 type="text"
-                id="name"
                 name="name"
                 className="form-control"
                 placeholder="Your name"
@@ -80,10 +124,9 @@ const Contact = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="email" className="label">EMAIL</label>
+              <label className="label">EMAIL</label>
               <input
                 type="email"
-                id="email"
                 name="email"
                 className="form-control"
                 placeholder="parvezalamshaik59@gmail.com"
@@ -94,10 +137,9 @@ const Contact = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="subject" className="label">SUBJECT</label>
+              <label className="label">SUBJECT</label>
               <input
                 type="text"
-                id="subject"
                 name="subject"
                 className="form-control"
                 placeholder="Project discussion"
@@ -107,9 +149,8 @@ const Contact = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="message" className="label">MESSAGE</label>
+              <label className="label">MESSAGE</label>
               <textarea
-                id="message"
                 name="message"
                 className="form-control textarea"
                 placeholder="Tell me about your project..."
@@ -119,12 +160,20 @@ const Contact = () => {
               />
             </div>
 
-            <button type="submit" className="send-btn" disabled={isSubmitting}>
+            <button
+              type="submit"
+              className="send-btn"
+              disabled={isSubmitting}
+            >
               {isSubmitting ? "TRANSMITTING..." : "SEND_MESSAGE"}
             </button>
 
             {formMessage && (
-              <div className={`form-message ${formMessage.includes("ERROR") ? "error" : "success"}`}>
+              <div
+                className={`form-message ${
+                  formMessage.includes("ERROR") ? "error" : "success"
+                }`}
+              >
                 {formMessage}
               </div>
             )}
