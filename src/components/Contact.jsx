@@ -35,10 +35,10 @@ const Contact = () => {
 
     emailjs
       .send(
-        "service_o51026r",      // your EmailJS service ID
-        "YOUR_TEMPLATE_ID",     // replace with template id
+        "service_o51026r",
+        "template_q1nof4p",
         templateParams,
-        "YOUR_PUBLIC_KEY"       // replace with public key
+        "YOUR_PUBLIC_KEY"
       )
       .then(
         () => {
@@ -65,7 +65,7 @@ const Contact = () => {
 
       <div className="contact-container">
 
-        {/* Left Panel */}
+        {/* Left Info Panel */}
         <div className="info-panel">
           <h3 className="info-title">
             Let's Build Something Amazing Together
@@ -112,6 +112,7 @@ const Contact = () => {
 
         {/* Contact Form */}
         <div className="contact-form">
+
           <form onSubmit={handleSubmit}>
 
             <div className="form-group">
@@ -133,7 +134,7 @@ const Contact = () => {
                 type="email"
                 name="email"
                 className="form-control"
-                placeholder="parvezalamshaik59@gmail.com"
+                placeholder="your@email.com"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -183,6 +184,7 @@ const Contact = () => {
             )}
 
           </form>
+
         </div>
 
       </div>
