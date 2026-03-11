@@ -1,0 +1,347 @@
+/* ==============================
+   NEON OVERDRIVE LOADING SCREEN
+   ============================== */
+
+.loading-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #0a0a0a;
+  color: #e0ffe0;
+  font-family: "JetBrains Mono", monospace;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+/* CRT Scanline Overlay */
+.loading-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 1px,
+    rgba(0, 255, 157, 0.03) 1px,
+    rgba(0, 255, 157, 0.03) 2px
+  );
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.7;
+}
+
+/* Animated glitch particles in bg */
+.loading-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 20% 30%, var(--glitch-1, #ff2a6d) 0%, transparent 15%),
+    radial-gradient(circle at 80% 70%, var(--glitch-2, #05d9e8) 0%, transparent 12%),
+    radial-gradient(circle at 50% 10%, var(--glitch-4, #f2a900) 0%, transparent 20%);
+  opacity: 0.15;
+  animation: pulse 6s infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.1; }
+  100% { opacity: 0.25; }
+}
+
+/* Floating data shards (replaces particles) */
+.particle {
+  position: absolute;
+  border-radius: 4px;
+  background: radial-gradient(circle, var(--glitch-2, #05d9e8), transparent);
+  opacity: 0.7;
+  animation: float 4s ease-in-out infinite alternate;
+  box-shadow: 0 0 8px var(--glitch-2);
+  width: 6px;
+  height: 6px;
+}
+
+.particle:nth-child(2n) {
+  background: radial-gradient(circle, var(--glitch-1, #ff2a6d), transparent);
+  box-shadow: 0 0 8px var(--glitch-1);
+}
+
+.particle:nth-child(3n) {
+  background: radial-gradient(circle, var(--glitch-5, #6d32e0), transparent);
+  box-shadow: 0 0 8px var(--glitch-5);
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateY(-30px) rotate(15deg);
+    opacity: 1;
+  }
+}
+
+/* Logo wrapper */
+.logo-wrapper {
+  margin-bottom: 20px;
+  z-index: 3;
+  position: relative;
+}
+
+/* Holographic logo shape */
+.logo-shape {
+  width: 120px;
+  height: 120px;
+  border: 2px solid var(--glitch-2, #05d9e8);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotate 8s linear infinite, pulseGlow 2s ease-in-out infinite alternate;
+  position: relative;
+  box-shadow:
+    0 0 20px var(--glitch-2),
+    0 0 40px var(--glitch-5);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+.logo-shape::before,
+.logo-shape::after {
+  content: "";
+  position: absolute;
+  border: 2px solid var(--glitch-5, #6d32e0);
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  top: -6px;
+  left: -6px;
+  transform: rotate(45deg);
+  animation: rotateReverse 8s linear infinite;
+}
+
+@keyframes rotateReverse {
+  0% { transform: rotate(45deg); }
+  100% { transform: rotate(-315deg); }
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: 800;
+  background: linear-gradient(45deg, var(--glitch-2), var(--glitch-5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px var(--glitch-2);
+  letter-spacing: -1px;
+  animation: glitchText 3s infinite;
+}
+
+@keyframes glitchText {
+  0%, 92%, 100% { text-shadow: 0 0 10px var(--glitch-2); }
+  94% { text-shadow: 2px 0 10px var(--glitch-1), -2px 0 10px var(--glitch-5); }
+  96% { text-shadow: -2px 0 10px var(--glitch-5), 2px 0 10px var(--glitch-1); }
+  98% { text-shadow: 0 0 10px var(--glitch-2); }
+}
+
+/* Brand title — terminal boot */
+.brand-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 15px 0;
+  background: linear-gradient(90deg, var(--glitch-1), var(--glitch-3), var(--glitch-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px var(--glitch-3);
+  z-index: 3;
+  letter-spacing: 2px;
+  animation: typeIn 2s ease-out;
+}
+
+@keyframes typeIn {
+  0% { opacity: 0; transform: translateX(-20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+.brand-title span {
+  color: var(--glitch-5);
+  text-shadow: 0 0 10px var(--glitch-5);
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--glitch-3, #32e07d);
+  margin-bottom: 30px;
+  z-index: 3;
+  text-shadow: 0 0 8px var(--glitch-3);
+  letter-spacing: 1px;
+}
+
+/* Progress container — "System Integrity Scan" */
+.progress-container {
+  width: 320px;
+  text-align: center;
+  margin-bottom: 30px;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 16px;
+  border: 1px solid var(--glitch-3);
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(50, 224, 125, 0.3);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  position: relative;
+  border: 1px solid rgba(50, 224, 125, 0.3);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--glitch-3), var(--glitch-2));
+  width: 0%;
+  transition: width 0.3s cubic-bezier(0.85, 0, 0.15, 1);
+  position: relative;
+  box-shadow: inset 0 0 8px var(--glitch-2);
+}
+
+.progress-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background: white;
+  filter: brightness(2);
+  animation: scanPulse 1s infinite;
+}
+
+@keyframes scanPulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: var(--glitch-2);
+  text-shadow: 0 0 5px var(--glitch-2);
+  font-weight: 600;
+}
+
+/* Dots — "Connecting to Mainframe..." */
+.dots {
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.dots span {
+  width: 8px;
+  height: 8px;
+  background: var(--glitch-1);
+  border-radius: 50%;
+  animation: blinkDot 1.5s infinite;
+  box-shadow: 0 0 8px var(--glitch-1);
+}
+
+.dots span:nth-child(2) {
+  animation-delay: 0.3s;
+  background: var(--glitch-3);
+  box-shadow: 0 0 8px var(--glitch-3);
+}
+
+.dots span:nth-child(3) {
+  animation-delay: 0.6s;
+  background: var(--glitch-2);
+  box-shadow: 0 0 8px var(--glitch-2);
+}
+
+@keyframes blinkDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow:
+      0 0 20px var(--glitch-2),
+      0 0 40px var(--glitch-5);
+  }
+  100% {
+    box-shadow:
+      0 0 30px var(--glitch-2),
+      0 0 60px var(--glitch-5),
+      0 0 80px var(--glitch-1);
+  }
+}
+
+/* ==============================
+   HACKER DRONES (replaces cartoon planes)
+   ============================== */
+
+.drone {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  bottom: -40px;
+  opacity: 0.9;
+  animation: flyUp 15s linear infinite;
+  z-index: 1;
+  filter: drop-shadow(0 0 8px var(--glitch-5));
+  transform: rotate(-45deg);
+}
+
+.drone::before {
+  content: ">";
+  color: var(--glitch-5);
+  font-weight: 800;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 1s infinite;
+}
+
+.drone:nth-child(2n) {
+  filter: drop-shadow(0 0 8px var(--glitch-1));
+}
+
+.drone:nth-child(3n) {
+  filter: drop-shadow(0 0 8px var(--glitch-3));
+}
+
+@keyframes flyUp {
+  0% {
+    transform: translateY(0) rotate(-45deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-120vh) rotate(-45deg);
+    opacity: 0;
+  }
+}

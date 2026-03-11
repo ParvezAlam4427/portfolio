@@ -1,0 +1,278 @@
+/* ===============================
+   About.css (Dark Galaxy Theme)
+   =============================== */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-dark: #0f1115;
+  --card-bg: rgba(20, 20, 25, 0.85);
+  --accent-primary: #4dd0e1;
+  --accent-secondary: #ffca28;
+  --accent-highlight: #66ff99;
+  --text-light: #e6e6e6;
+  --text-muted: #b0b0b0;
+  --shadow-light: rgba(77, 208, 225, 0.2);
+  --shadow-hover: rgba(77, 208, 225, 0.5);
+  --transition-fast: 0.3s ease;
+  --transition-slow: 0.6s ease;
+}
+
+/* ===============================
+   About Section Container
+   =============================== */
+.about-section {
+  padding: 140px 10% 60px; /* push below header */
+  min-height: 100vh;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  font-family: "JetBrains Mono", monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle Background Glitch / Particles */
+.about-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 30% 60%, var(--accent-highlight) 0%, transparent 15%),
+    radial-gradient(circle at 70% 20%, var(--accent-secondary) 0%, transparent 12%);
+  opacity: 0.08;
+  animation: pulse 10s infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Section Title */
+.about-title {
+  font-size: 3rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 70px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-highlight), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px var(--accent-primary);
+  letter-spacing: -1px;
+}
+
+/* Grid Layout */
+.container.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+/* Card */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--accent-primary);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 0 15px var(--shadow-light);
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px var(--shadow-hover), 0 0 40px var(--accent-primary);
+  border-color: var(--accent-highlight);
+}
+
+.card h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-light);
+  text-shadow: 0 0 8px var(--accent-highlight);
+}
+
+.heading-icon {
+  color: var(--accent-primary);
+  font-size: 2rem;
+  text-shadow: 0 0 10px var(--accent-primary);
+}
+
+/* Specialty Cards */
+.specialty {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 25px;
+  padding: 16px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(102, 255, 153, 0.2);
+  transition: all var(--transition-fast);
+}
+
+.specialty:hover {
+  background: rgba(102, 255, 153, 0.05);
+  border-color: var(--accent-highlight);
+  box-shadow: 0 0 15px var(--accent-highlight);
+}
+
+.specialty h4 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--text-light);
+  text-shadow: 0 0 5px var(--accent-highlight);
+}
+
+.specialty p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Specialty Icons */
+.icon {
+  font-size: 1.5rem;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 0 5px #fff;
+}
+
+.icon.blue { background: var(--accent-primary); }
+.icon.green { background: var(--accent-highlight); }
+.icon.pink { background: #ff2a6d; }
+.icon.orange { background: var(--accent-secondary); }
+
+/* Right Column */
+.right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Progress Bars */
+.progress {
+  margin-bottom: 22px;
+}
+
+.progress span {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-highlight);
+  margin-bottom: 8px;
+  text-shadow: 0 0 5px var(--accent-highlight);
+}
+
+.bar {
+  height: 12px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+  text-align: right;
+  padding-right: 10px;
+  line-height: 12px;
+  font-weight: 800;
+  color: #000;
+}
+
+.bar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: currentColor;
+  animation: fillBar 2s forwards;
+}
+
+.bar.blue { color: var(--accent-primary); animation-delay: 0.2s; }
+.bar.green { color: var(--accent-highlight); animation-delay: 0.4s; }
+.bar.purple { color: #6d32e0; animation-delay: 0.6s; }
+.bar.pink { color: #ff2a6d; animation-delay: 0.8s; }
+.bar.orange { color: var(--accent-secondary); animation-delay: 1s; }
+
+@keyframes fillBar {
+  0% { width: 0; }
+  100% { width: 90%; } /* Adjust per skill */
+}
+
+/* Mission Paragraph */
+.mission p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: var(--accent-secondary);
+  text-shadow: 0 0 5px var(--accent-secondary);
+}
+
+/* Status Indicators */
+.status {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #6d32e0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-shadow: 0 0 8px var(--accent-primary);
+}
+
+.status .active {
+  height: 12px;
+  width: 12px;
+  background-color: var(--accent-highlight);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-highlight);
+  animation: blink 1.5s infinite;
+}
+
+.status .mode {
+  color: var(--accent-primary);
+  font-weight: 800;
+  text-shadow: 0 0 8px var(--accent-primary);
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0.3; }
+}
+
+/* Pulse animation for background particles */
+@keyframes pulse {
+  0% { opacity: 0.08; }
+  100% { opacity: 0.15; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container.grid-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+  }
+
+  .specialty h4 { font-size: 1.1rem; }
+  .progress span { font-size: 1rem; }
+}

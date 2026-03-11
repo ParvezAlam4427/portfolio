@@ -1,0 +1,359 @@
+/* ==============================
+   GLOBAL STYLES
+============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0a0f1c;
+  color: #fff;
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none; /* Hide default cursor for custom one */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ==============================
+   NAVBAR
+============================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #00e0ff, #ff00d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 30px;
+}
+
+.navbar ul li a {
+  font-size: 1rem;
+  color: #ddd;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  color: #00e0ff;
+}
+
+/* ==============================
+   HERO SECTION
+============================== */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 120px 60px;
+  min-height: 100vh;
+}
+
+.hero-left {
+  flex: 1;
+}
+
+.hero-left h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero-left h1 span {
+  background: linear-gradient(90deg, #00e0ff, #ff00d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-left h2 {
+  font-size: 1.5rem;
+  color: #00e0ff;
+  margin-bottom: 20px;
+}
+
+.hero-left p {
+  max-width: 500px;
+  margin-bottom: 30px;
+  color: #bbb;
+}
+
+.buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #00e0ff, #ff00d4);
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  opacity: 0.8;
+}
+
+.btn-outline {
+  border: 2px solid #00e0ff;
+  color: #00e0ff;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: #00e0ff;
+  color: #000;
+}
+
+/* ==============================
+   HERO RIGHT (LOGO CIRCLE)
+============================== */
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-right .circle {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 3px solid #00e0ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-right img {
+  width: 150px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* ==============================
+   SOCIAL ICONS
+============================== */
+.socials {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.socials a {
+  font-size: 1.5rem;
+  color: #bbb;
+  transition: color 0.3s ease;
+}
+
+.socials a:hover {
+  color: #00e0ff;
+}
+
+/* ==============================
+   CUSTOM CURSOR
+============================== */
+.cursor {
+  position: fixed;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #00e0ff;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+  z-index: 9999;
+}
+
+.cursor::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #00e0ff;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* LoadingScreen.css */
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #0a0f1c;
+  color: #fff;
+  font-size: 2rem;
+}
+/* ===============================
+   App.css
+   =============================== */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background: #0a0f1c;
+  color: #fff;
+}
+
+.App {
+  overflow-x: hidden;
+}
+/* Hide the default system cursor everywhere */
+body, html {
+  cursor: none;
+}
+/* ===============================
+   PROJECTS SECTION
+=============================== */
+.projects-section {
+  min-height: 100vh;
+  padding: 100px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the content horizontally */
+  justify-content: flex-start;
+  background: #0a0f1c;
+}
+
+.projects-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #00e0ff;
+  text-align: center; /* Centers the title text */
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #00e0ff, #ff00d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* responsive grid */
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  justify-items: center; /* Centers each card in its column */
+}
+
+/* Project Card Styling */
+.project-card {
+  background: rgba(8, 8, 8, 0.85);
+  border: 1px solid #00e0ff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.project-card img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.project-card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #00e0ff;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.project-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-tags span {
+  background: rgba(0, 255, 255, 0.1);
+  color: #00e0ff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .projects-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-title {
+    font-size: 2rem;
+  }
+  .projects {
+    gap: 20px;
+  }
+}
+/* ==============================
+   SOCIAL ICONS
+============================== */
+.socials {
+  margin-top: 30px;
+  display: flex;
+  gap: 20px; /* increase spacing between icons */
+}
+
+.socials a {
+  font-size: 2.2rem; /* increased from 1.5rem */
+  color: #bbb;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.socials a:hover {
+  color: #00e0ff;
+  transform: scale(1.2); /* subtle grow effect on hover */
+}
