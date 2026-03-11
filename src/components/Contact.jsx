@@ -42,12 +42,12 @@ const Contact = () => {
         <div className="info-panel">
           <h3 className="info-title">Let's Build Something Amazing Together</h3>
           <p className="info-text">
-            Ready to bring your ideas to life? Whether you need a web application, mobile app, or custom software solution, I'm here to help you succeed.
+            Hello, I am a **fresher software developer** currently building my portfolio and looking for opportunities to work on real projects. I would love to connect and learn from professionals in the field.
           </p>
 
           {/* Social Icons like HomePage */}
           <div className="social-icons">
-            <a href="https://github.com/ParvezAlam4427" target="_blank" rel="noreferrer">
+            <a href="https://github.com/ParvezAlasm4427" target="_blank" rel="noreferrer">
               <FaGithub />
             </a>
             <a href="www.linkedin.com/in/parvez-alam-shaik-7b1117306" target="_blank" rel="noreferrer">
