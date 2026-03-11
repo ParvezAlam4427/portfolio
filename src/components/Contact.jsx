@@ -18,7 +18,7 @@ const Contact = () => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -27,54 +27,66 @@ const Contact = () => {
     setIsSubmitting(true);
 
     const templateParams = {
+      title: "Portfolio Contact Form",
       from_name: formData.name,
       from_email: formData.email,
       subject: formData.subject,
       message: formData.message,
+      email: formData.email
     };
 
-    emailjs
-      .send(
-        "service_o51026r",
-        "template_q1nof4p",
-        templateParams,
-        "YOUR_PUBLIC_KEY"
-      )
-      .then(
-        () => {
-          setFormMessage("MESSAGE SENT ✓ CONNECTION ESTABLISHED");
-          setFormData({
-            name: "",
-            email: "",
-            subject: "",
-            message: "",
-          });
-          setIsSubmitting(false);
-        },
-        (error) => {
-          console.log(error);
-          setFormMessage("ERROR ✗ FAILED TO SEND MESSAGE");
-          setIsSubmitting(false);
-        }
-      );
+    emailjs.send(
+      "service_o51026r",
+      "template_q1nof4p",
+      templateParams,
+      "YOUR_PUBLIC_KEY"
+    )
+    .then(
+      () => {
+        setFormMessage("MESSAGE SENT ✓ CONNECTION ESTABLISHED");
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: ""
+        });
+        setIsSubmitting(false);
+      },
+      (error) => {
+        console.log(error);
+        setFormMessage("ERROR ✗ FAILED TO SEND MESSAGE");
+        setIsSubmitting(false);
+      }
+    );
   };
 
   return (
     <section className="contact-section">
+
       <h2 className="contact-title">CONTACT ME()</h2>
 
       <div className="contact-container">
 
         {/* Left Info Panel */}
         <div className="info-panel">
+
           <h3 className="info-title">
             Let's Build Something Amazing Together
           </h3>
 
           <p className="info-text">
-            Hello, I am a fresher software developer currently building my
-            portfolio and looking for opportunities to work on real projects.
-            I would love to connect and learn from professionals in the field.
+            I am an aspiring software developer currently building my
+            portfolio and looking for opportunities to work on real
+            projects. Feel free to reach out for collaboration,
+            internships, or tech discussions.
+          </p>
+
+          <p className="info-text">
+            <strong>Email:</strong> parvezalamshaik59@gmail.com
+          </p>
+
+          <p className="info-text">
+            <strong>Location:</strong> Andhra Pradesh, India
           </p>
 
           <div className="social-icons">
@@ -110,6 +122,7 @@ const Contact = () => {
           </div>
         </div>
 
+
         {/* Contact Form */}
         <div className="contact-form">
 
@@ -128,6 +141,7 @@ const Contact = () => {
               />
             </div>
 
+
             <div className="form-group">
               <label className="label">EMAIL</label>
               <input
@@ -141,6 +155,7 @@ const Contact = () => {
               />
             </div>
 
+
             <div className="form-group">
               <label className="label">SUBJECT</label>
               <input
@@ -152,6 +167,7 @@ const Contact = () => {
                 onChange={handleChange}
               />
             </div>
+
 
             <div className="form-group">
               <label className="label">MESSAGE</label>
@@ -165,6 +181,7 @@ const Contact = () => {
               />
             </div>
 
+
             <button
               type="submit"
               className="send-btn"
@@ -172,6 +189,7 @@ const Contact = () => {
             >
               {isSubmitting ? "TRANSMITTING..." : "SEND_MESSAGE"}
             </button>
+
 
             {formMessage && (
               <div
@@ -188,6 +206,7 @@ const Contact = () => {
         </div>
 
       </div>
+
     </section>
   );
 };
