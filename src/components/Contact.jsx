@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 
 const Contact = () => {
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,10 +35,10 @@ const Contact = () => {
 
     emailjs
       .send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
+        "service_o51026r",      // your EmailJS service ID
+        "YOUR_TEMPLATE_ID",     // replace with template id
         templateParams,
-        "YOUR_PUBLIC_KEY"
+        "YOUR_PUBLIC_KEY"       // replace with public key
       )
       .then(
         () => {
@@ -50,7 +51,8 @@ const Contact = () => {
           });
           setIsSubmitting(false);
         },
-        () => {
+        (error) => {
+          console.log(error);
           setFormMessage("ERROR ✗ FAILED TO SEND MESSAGE");
           setIsSubmitting(false);
         }
@@ -76,6 +78,7 @@ const Contact = () => {
           </p>
 
           <div className="social-icons">
+
             <a
               href="https://github.com/ParvezAlam4427"
               target="_blank"
@@ -103,6 +106,7 @@ const Contact = () => {
             <a href="mailto:parvezalamshaik59@gmail.com">
               <FaEnvelope />
             </a>
+
           </div>
         </div>
 
@@ -177,8 +181,10 @@ const Contact = () => {
                 {formMessage}
               </div>
             )}
+
           </form>
         </div>
+
       </div>
     </section>
   );
