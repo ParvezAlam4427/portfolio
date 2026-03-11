@@ -39,7 +39,7 @@ const Contact = () => {
       "service_o51026r",
       "template_q1nof4p",
       templateParams,
-      "YOUR_PUBLIC_KEY"
+      "3iD6rvuFdEBeEZXV3"
     )
     .then(
       () => {
