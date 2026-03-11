@@ -16,9 +16,7 @@ const HomePage = () => {
           </h1>
 
           <p className="sub">
-            Passionate Full Stack Web Developer from Bapatla, focused on building
-            modern, scalable, and user-friendly web applications.
-          </p>
+Aspiring Software Developer passionate about learning and building modern, user-friendly software applications.          </p>
 
           <div className="mission">
             <strong>MY MISSION</strong>
@@ -34,7 +32,7 @@ const HomePage = () => {
             </a>
             <a
               className="btn btn-secondary"
-              href="https://github.com/ParvezAlam4427/ALAMsresume/blob/main/Shaik_ParvezAlam.pdf"
+              href="https://raw.githubusercontent.com/ParvezAlam4427/ALAMsresume/main/Parvez_Alam_Shaik_Resume.pdf"
               target="_blank"
               rel="noreferrer"
             >
