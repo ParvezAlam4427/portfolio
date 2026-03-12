@@ -62,21 +62,21 @@ const About = () => {
 
             <div className="progress">
               <span>React</span>
-              <div className="bar blue" style={{ width: "75%" }}>90%</div>
+              <div className="bar blue" style={{ width: "75%" }}></div>
             </div>
 
             <div className="progress">
               <span>Java</span>
-              <div className="bar green" style={{ width: "85%" }}>85%</div>
+              <div className="bar green" style={{ width: "85%" }}></div>
             </div>
             <div className="progress">
               <span>SQL</span>
-              <div className="bar pink" style={{ width: "80%" }}>80%</div>
+              <div className="bar pink" style={{ width: "80%" }}></div>
             </div>
 
             <div className="progress">
               <span>AI & LLM Tools</span>
-              <div className="bar orange" style={{ width: "75%" }}>75%</div>
+              <div className="bar orange" style={{ width: "75%" }}></div>
             </div>
 
           </div>
