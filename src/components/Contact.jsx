@@ -27,12 +27,10 @@ const Contact = () => {
     setIsSubmitting(true);
 
     const templateParams = {
-      title: "Portfolio Contact Form",
       from_name: formData.name,
       from_email: formData.email,
       subject: formData.subject,
-      message: formData.message,
-      email: formData.email
+      message: formData.message
     };
 
     emailjs.send(
@@ -53,7 +51,7 @@ const Contact = () => {
         setIsSubmitting(false);
       },
       (error) => {
-        console.log(error);
+        console.error(error);
         setFormMessage("ERROR ✗ FAILED TO SEND MESSAGE");
         setIsSubmitting(false);
       }
@@ -67,7 +65,7 @@ const Contact = () => {
 
       <div className="contact-container">
 
-        {/* Left Info Panel */}
+        {/* Info Panel */}
         <div className="info-panel">
 
           <h3 className="info-title">
@@ -120,6 +118,7 @@ const Contact = () => {
             </a>
 
           </div>
+
         </div>
 
 
