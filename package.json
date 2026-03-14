@@ -2,7 +2,7 @@
   "name": "parvez-alam-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://parvez-alam.github.io/Parvez-alam",
+  "homepage": "https://github.com/ParvezAlam4427/parvez-alam.git",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@testing-library/dom": "^10.4.1",
