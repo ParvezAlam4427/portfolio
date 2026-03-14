@@ -22,7 +22,7 @@ https://parvezalam4427.github.io/parvez-alam/
 
 Clone the repository
 
-git clone https://github.com/ParvezAlam4427/parvez-alam.git
+git clone https://github.com/ParvezAlam4427/parvez-alam-portfolio.git
 
 Install dependencies
 
