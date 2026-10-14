@@ -1,7 +1,7 @@
 import React from "react";
 import "./HomePage.css";
 
-import heroImage from "../assets/images/myimage.jpg";
+import heroImage from "../assets/images/Hero.png";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
 
 const HomePage = () => {
